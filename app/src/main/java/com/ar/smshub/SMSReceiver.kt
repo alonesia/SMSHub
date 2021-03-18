@@ -50,7 +50,7 @@ class SMSReceiver : BroadcastReceiver() {
             e(TAG, smsBody)
             var settingsManager = SettingsManager(context)
 
-            PostReceivedMessage().execute(settingsManager.receiveURL, settingsManager.deviceId, smsBody, smsSender)
+            PostReceivedMessage().execute(settingsManager.sendURL, settingsManager.deviceId, smsBody, smsSender)
 
 
             val i = Intent("SMS_RECEIVED")

@@ -53,7 +53,7 @@ class SendTask constructor(_settings: SettingsManager, _context: Context) : Time
             val sentIn = Intent(mainActivity.SENT_SMS_FLAG)
             settings.updateSettings()
             sentIn.putExtra("messageId", sms!!.messageId)
-            sentIn.putExtra("statusURL", settings.statusURL)
+            sentIn.putExtra("statusURL", settings.sendURL)
             sentIn.putExtra("deviceId", settings.deviceId)
             sentIn.putExtra("delivered", 0)
 
@@ -62,7 +62,7 @@ class SendTask constructor(_settings: SettingsManager, _context: Context) : Time
 
             val deliverIn = Intent(mainActivity.DELIVER_SMS_FLAG)
             deliverIn.putExtra("messageId", sms!!.messageId)
-            deliverIn.putExtra("statusURL", settings.statusURL)
+            deliverIn.putExtra("statusURL", settings.sendURL)
             deliverIn.putExtra("deviceId", settings.deviceId)
             deliverIn.putExtra("delivered", 1)
 

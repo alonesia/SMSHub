@@ -11,8 +11,8 @@ class SettingsManager {
     var isSendEnabled: Boolean = false
     var interval: Int = 1
     var sendURL: String = ""
-    var statusURL: String = ""
-    var receiveURL: String = ""
+    //var statusURL: String = ""
+    //var receiveURL: String = ""
     var deviceId: String = ""
     var sharedPref: SharedPreferences
     var context: Context
@@ -37,23 +37,28 @@ class SettingsManager {
         this.isSendEnabled = sharedPref!!.getBoolean(context.getString(R.string.preference_send_enabled), defaultSendEnabled)
         this.interval = sharedPref!!.getInt(context.getString(R.string.preference_interval), defaultInterval)
         this.sendURL = sharedPref!!.getString(context.getString(R.string.preference_send_url), defaultSendURL)
-        this.receiveURL = sharedPref!!.getString(context.getString(R.string.preference_receive_url), defaultReceiveURL)
-        this.statusURL = sharedPref!!.getString(context.getString(R.string.preference_status_url), defaultStatusURL)
+        //this.receiveURL = sharedPref!!.getString(context.getString(R.string.preference_receive_url), defaultReceiveURL)
+        //this.statusURL = sharedPref!!.getString(context.getString(R.string.preference_status_url), defaultStatusURL)
         this.deviceId = sharedPref!!.getString(context.getString(R.string.preference_device_id), defaultDeviceId)
     }
 
-    fun setSettings(_isSendEnabled: Boolean, _interval: Int, _sendURL: String,_receiveURL: String,_statusURL: String, _deviceId: String){
+    fun setSettings(_isSendEnabled: Boolean,
+                    _interval: Int,
+                    _sendURL: String,
+                    //_receiveURL: String,
+                    //_statusURL: String,
+                    _deviceId: String){
         this.interval = _interval
         this.sendURL = _sendURL
-        this.receiveURL = _receiveURL
-        this.statusURL = _statusURL
+        //this.receiveURL = _receiveURL
+        //this.statusURL = _statusURL
         this.deviceId = _deviceId
         this.isSendEnabled = _isSendEnabled
         with(sharedPref!!.edit()) {
             putBoolean(context.getString(R.string.preference_send_enabled), _isSendEnabled)
             putString(context.getString(R.string.preference_send_url), _sendURL)
-            putString(context.getString(R.string.preference_receive_url), _receiveURL)
-            putString(context.getString(R.string.preference_status_url), _statusURL)
+            //putString(context.getString(R.string.preference_receive_url), _receiveURL)
+            //putString(context.getString(R.string.preference_status_url), _statusURL)
             putString(context.getString(R.string.preference_device_id), _deviceId)
             putInt(context.getString(R.string.preference_interval), _interval)
             commit()
